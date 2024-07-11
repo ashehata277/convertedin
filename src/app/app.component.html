@@ -55,6 +55,7 @@
             [min]="minPrice"
             [max]="maxPrice"
             [(ngModel)]="selectedPrice"
+            (change)="priceChanged()"
             #rangeInput
           />
           <div
@@ -72,6 +73,7 @@
           class="range-container"
           (mousemove)="onMouseMoveRate($event)"
           (mouseout)="onMouseOutRate()"
+          (change)="rateChanged()"
         >
           <input
             type="range"

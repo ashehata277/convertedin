@@ -63,7 +63,12 @@ export class AppComponent {
       this.search();
     }
   };
-
+  rateChanged = () => {
+    this.search();
+  };
+  priceChanged = () => {
+    this.search();
+  };
   search = () => {
     this.currentProducts = this.product?.products ?? [];
     if (this.selectedCat) {
@@ -76,7 +81,16 @@ export class AppComponent {
         (a) => a.brand == this.selectedBrand
       );
     }
-
+    if (this.selectedPrice) {
+      this.currentProducts = this.currentProducts.filter(
+        (a) => a.price <= this.selectedPrice
+      );
+    }
+    if (this.selectedRate) {
+      this.currentProducts = this.currentProducts.filter(
+        (a) => a.rate >= this.selectedRate
+      );
+    }
     if (this.searchText) {
       this.currentProducts = this.currentProducts.filter(
         (a) =>
@@ -115,7 +129,9 @@ export class AppComponent {
       this.maxRate = Math.max(
         ...(this.product.products.flatMap((a) => a.rate) as number[])
       );
-      const totalPages = Math.ceil(this.product.products.length / this.defaultPageSize);
+      const totalPages = Math.ceil(
+        this.product.products.length / this.defaultPageSize
+      );
 
       this.pages = Array.from({ length: totalPages }, (v, k) => k + 1);
     });
