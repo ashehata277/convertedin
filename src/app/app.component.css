@@ -1,0 +1,254 @@
+:root {
+  --main-bg-color: #224e79;
+  --sidebar-bg-color: #59909e;
+  --text-color: #333;
+  --header-text-color: white;
+  --border-color: #dcdcdc;
+  --border-radius: 8px;
+  --padding: 1rem;
+  --margin: 1rem;
+  --search-box-bg-color: #697a8b;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--padding);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+  background-color: var(--main-bg-color);
+  color: var(--header-text-color);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--margin);
+}
+.search-box {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.cart-wishlist {
+  display: flex;
+  gap: var(--padding);
+}
+
+.main-content {
+  display: flex;
+  gap: var(--margin);
+}
+
+.sidebar {
+  width: 20%;
+  padding: var(--padding);
+  background-color: var(--sidebar-bg-color);
+  border-radius: var(--border-radius);
+}
+
+.sidebar h2 {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.price-range,
+.product-rating {
+  margin-top: var(--padding);
+}
+
+.product-list {
+  width: 80%;
+  padding: var(--padding);
+  margin-left: 1rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--margin);
+}
+
+.product {
+  background-color: white;
+  padding: var(--padding);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: var(--padding);
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--main-bg-color);
+  color: var(--header-text-color);
+  border-radius: var(--border-radius);
+  margin: 0 var(--margin);
+}
+
+button:hover {
+  background-color: darken(var(--main-bg-color), 10%);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: var(--margin);
+  }
+
+  .product-list {
+    width: 100%;
+  }
+}
+
+button.focused {
+  background-color: #0056b3;
+  color: white;
+}
+
+button.previous {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+button.previous:hover {
+  background-color: #0056b3;
+  color: white;
+  border-color: #004494;
+}
+
+button.next {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+button.next:hover {
+  background-color: #0056b3;
+  color: white;
+  border-color: #004494;
+}
+
+button.page:hover {
+  background-color: #79a6d6;
+  color: white;
+  border-color: #79a6d6;
+}
+.category li {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category li:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.category li.focused {
+  background-color: #0056b3;
+  color: white;
+}
+
+.brand li {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.brand li:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.brand li.focused {
+  background-color: #0056b3;
+  color: white;
+}
+
+.restricted-image-height {
+  max-height: 200px;
+}
+
+.clear-search {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clear-search:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.range-container {
+  position: relative;
+  width: 300px;
+}
+
+.tooltip {
+  position: absolute;
+  top: -30px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}

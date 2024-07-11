@@ -2,6 +2,7 @@
   "name": "converted.in-assignment",
   "version": "0.0.0",
   "scripts": {
+    "dev": "npm install && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -18,6 +19,9 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@ngrx/effects": "^14.3.2",
+    "@ngrx/store": "^14.3.2",
+    "@ngrx/store-devtools": "^14.3.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
