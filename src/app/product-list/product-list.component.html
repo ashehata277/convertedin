@@ -1,0 +1,125 @@
+<div class="container">
+  <header class="header">
+    <h1>Products List</h1>
+    <input
+      type="text"
+      placeholder="Search for product"
+      class="search-box"
+      [(ngModel)]="searchText"
+      (change)="search()"
+    />
+    <div class="cart-wishlist">
+      <a href="#" class="wishlist">Wishlist</a>
+      <a href="#" class="cart">Cart</a>
+    </div>
+    <button class="clear-search" (click)="clear()">clear</button>
+  </header>
+
+  <div class="main-content">
+    <aside class="sidebar">
+      <div class="category">
+        <h2>Category</h2>
+        <ul>
+          <div *ngFor="let cat of categoryList">
+            <li
+              [ngClass]="{ focused: cat === selectedCat }"
+              (click)="categoryChanged(cat)"
+            >
+              {{ cat }}
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div class="brand">
+        <h2>Brand</h2>
+        <ul>
+          <div *ngFor="let brand of brandList">
+            <li
+              [ngClass]="{ focused: brand === selectedBrand }"
+              (click)="brandChanged(brand)"
+            >
+              {{ brand }}
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div class="price-range">
+        <h2>Price Range (EGP)</h2>
+        <div
+          class="range-container"
+          (mousemove)="onMouseMovePrice($event)"
+          (mouseout)="onMouseOutPrice()"
+        >
+          <input
+            type="range"
+            [min]="minPrice"
+            [max]="maxPrice"
+            [(ngModel)]="selectedPrice"
+            (change)="priceChanged()"
+            #rangeInput
+          />
+          <div
+            class="tooltip"
+            *ngIf="showTooltipPrice"
+            [ngStyle]="{ left: tooltipPositionPrice + 'px' }"
+          >
+            {{ selectedPrice }}
+          </div>
+        </div>
+      </div>
+      <div class="product-rating">
+        <h2>Product Rating</h2>
+        <div
+          class="range-container"
+          (mousemove)="onMouseMoveRate($event)"
+          (mouseout)="onMouseOutRate()"
+          (change)="rateChanged()"
+        >
+          <input
+            type="range"
+            [min]="minRate"
+            [max]="maxRate"
+            [(ngModel)]="selectedRate"
+            #rangeInput
+          />
+          <div
+            class="tooltip"
+            *ngIf="showTooltipRate"
+            [ngStyle]="{ left: tooltipPositionRate + 'px' }"
+          >
+            {{ selectedRate }}
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="product-list">
+      <h2>{{ product?.total }} Results for "Electronics & Mobiles in Egypt"</h2>
+      <div class="products">
+        <div class="product" *ngFor="let product of currentProducts">
+          <img
+            [src]="product.images[0]"
+            alt="{{ product.title }}"
+            class="restricted-image-height"
+            (click)="goToProductDetails(product.id)"
+          />
+          <h3 (click)="goToProductDetails(product.id)">{{ product.title }}</h3>
+          <p>{{ product.price }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="pagination">
+    <button class="previous" (click)="previousPage()">Previous</button>
+    <button
+      class="page"
+      *ngFor="let page of pages"
+      (click)="changePage(page)"
+      [ngClass]="{ focused: focusedPage === page }"
+    >
+      {{ page }}
+    </button>
+    <button class="next" (click)="nextPage()">Next</button>
+  </footer>
+</div>

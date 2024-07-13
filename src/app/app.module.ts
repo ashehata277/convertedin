@@ -12,9 +12,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { DataEffects } from 'src/states/effect/app-effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { ProductDetailsComponent } from 'src/app/product-details/product-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductDetailsComponent, NotFoundComponent, ProductListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

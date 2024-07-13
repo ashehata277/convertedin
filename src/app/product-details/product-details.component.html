@@ -1,0 +1,64 @@
+<div class="container" *ngIf="product">
+  <header>
+    <nav>
+      <ul>
+        <div class="tags" *ngFor="let tag of product.tags">
+          <li>{{ tag }}</li>
+        </div>
+      </ul>
+    </nav>
+    <div class="user-actions">
+      <span>Wishlist</span>
+      <span>Cart</span>
+    </div>
+  </header>
+  <main>
+    <div class="product-details">
+      <h1>{{ product.title }}</h1>
+      <div class="product-images">
+        <img [src]="product.images[0]" alt="PS5 Main Image" />
+        <div class="thumbnails">
+          <img [src]="product.thumbnail" alt="PS5 Thumbnail 1" />
+          <img
+            *ngFor="let a of product.images"
+            [src]="a"
+            alt="PS5 Thumbnail 1"
+          />
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="price">EGP {{ product.price }}</p>
+        <div class="star-rating">
+          <span class="star" *ngFor="let n of getRateStars(product.rating)"
+            >&#9733;</span
+          >
+        </div>
+        <div class="payment-options">
+          <button>Add To Cart</button>
+        </div>
+        <p class="model-number">
+          Model Number:
+          <span> {{ product.sku }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="overview">
+      <h2>Overview</h2>
+      <p>
+        {{ product.description }}
+      </p>
+    </div>
+
+    <div class="review">
+      <h2>Reviews</h2>
+      <div class="review-item" *ngFor="let review of product.reviews">
+        <p>
+          <strong>{{ review.reviewerName }}</strong>
+          {{ review.comment }} (Rating: {{ review.rating }})
+        </p>
+        <p>{{ review.reviewerEmail }}</p>
+        <p>Date: {{ review.date }}</p>
+      </div>
+    </div>
+  </main>
+</div>
